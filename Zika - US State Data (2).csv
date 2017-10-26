@@ -1,0 +1,52 @@
+Region,States,Number_of_Cases, Percentage_of_US_Cases
+South,Alabama,3,1
+West,Alaska,1,0.5
+West,Arizona,1,0.5
+South,Arkansas,0,0
+West,California,27,9
+West,Colorado,5,2
+Northeast,Connecticut,0,0
+Northeast,Delaware,0,0
+South,District of Columbia,1,0.5
+South,Florida,54,19
+South,Georgia,1,0.5
+West,Hawaii,2,1
+West,Idaho,0,0
+Midwest,Illinois,6,2
+Midwest,Indiana,2,1
+Midwest,Iowa,1,0.5
+Midwest,Kansas,2,1
+South,Kentucky,2,1
+South,Louisiana,1,0.5
+Northeast,Maine,1,0.5
+South,Maryland,10,3
+Northeast,Massachusetts,9,3
+Midwest,Michigan,7,3
+Midwest,Minnesota,6,2
+South,Mississippi,2,1
+Midwest,Missouri,1,0.5
+West,Montana,0,0
+West,Nebraska,1,0.5
+West,Nevada,1,0.5
+Northeast,New Hampshire,0,0
+Northeast,New Jersey,7,2
+West,New Mexico,0,0
+Northeast,New York,54,19
+South,North Carolina,5,2
+West,North Dakota,0,0
+Midwest,Ohio,3,1
+South,Oklahoma,1,0.5
+West,Oregon,4,1
+Northeast,Pennsylvania,5,2
+Northeast,Rhode Island,3,1
+South,South Carolina,2,1
+West,South Dakota,0,0
+South,Tennessee,0,0
+South,Texas,29,10
+West,Utah,4,1
+Northeast,Vermont,3,1
+South,Virginia,6,2
+West,Washington,8,3
+South,West Virginia,1,0.5
+Midwest,Wisconsin,4,1
+West,Wyoming,2,1
