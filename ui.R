@@ -1,12 +1,10 @@
 library(shiny)
 
-fluidPage(
+navbarPage("Navbar!",
   
-  titlePanel("Zika Cases in Pan-America"),
-  
-  sidebarLayout(
-    #panel with widgets
-    sidebarPanel(
+  tabPanel("Zika Cases in Pan-America",
+      sidebarLayout(
+      sidebarPanel(
       selectInput( inputId = 'Country',
                    label   = 'Select a Country',
                    choices = unique(Zika_Country_Data$Country_Territory)
@@ -15,6 +13,13 @@ fluidPage(
     
     # Panel plot
     mainPanel(plotOutput("Outbreak_Over_Time"))
-  )
+    )
+  ),
   
+  tabPanel("Zika Cases in United States",
+ 
+   mainPanel(plotOutput("Outbreak_By_State"))
+   )
+
 )
+  
