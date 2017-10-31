@@ -3,7 +3,7 @@ library(tidyverse)
 library(ggplot2)
 
 Zika_Country_Data <- read_csv("~/zika-epidemic/Zika - Country Data.csv")
-Zika_State_Data <- read.csv("StataData.csv")
+Zika_State_Data<- read.csv("~/zika-epidemic/Zika - US State Data (2).csv")
 Zika_Country_Data$Date <- as.Date(Zika_Country_Data$Date, format = "%m/%d/%Y")
 
 
@@ -22,13 +22,13 @@ function(input, output, session) {
 
   output$Outbreak_By_State <- renderPlot({
     
-    StataData %>%
-      filter(States == input$State) %>%
+    Zika_State_Data %>%
+      filter(Region == input$Region) %>%
       ggplot(aes (States, Number_of_Cases)) +
-      geom_histogram() +
+      geom_point() +
       theme(axis.text.x = element_text(angle = 60, hjust = 1))
     
   })
-  
+   
 
 }

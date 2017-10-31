@@ -1,7 +1,11 @@
 library(shiny)
+library(markdown)
 
 navbarPage("Navbar!",
   
+  tabPanel(Background),
+  
+          
   tabPanel("Zika Cases in Pan-America",
       sidebarLayout(
       sidebarPanel(
@@ -18,7 +22,7 @@ navbarPage("Navbar!",
   tabPanel("Zika Cases in United States",
            selectInput(inputId = 'Region',
                        label= 'Select a Region',
-                       choices = unique(StataData)
+                       choices = unique(Zika_US_State_Data_2_$Region)
                        ),
  
    mainPanel(plotOutput("Outbreak_By_State"))
