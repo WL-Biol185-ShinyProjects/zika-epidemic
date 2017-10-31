@@ -4,18 +4,11 @@ library(ggplot2)
 
 Zika_Country_Data <- read_csv("~/zika-epidemic/Zika - Country Data.csv")
 Zika_State_Data <- read.csv("StataData.csv")
-
 Zika_Country_Data$Date <- as.Date(Zika_Country_Data$Date, format = "%m/%d/%Y")
 
 
 function(input, output, session) {
-  
 
-
-as.Date(Zika_Country_Data$Date, format = "%m/%d/%Y")
-
-
-function(input,output) {
   
   output$Outbreak_Over_Time <- renderPlot({
     
@@ -26,7 +19,6 @@ function(input,output) {
       theme(axis.text.x = element_text(angle = 60, hjust = 1))
   })
 
-    
 
   output$Outbreak_By_State <- renderPlot({
     
@@ -39,8 +31,4 @@ function(input,output) {
   })
   
 
-  }
-
-  
 }
-
