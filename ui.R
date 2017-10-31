@@ -3,7 +3,12 @@ library(markdown)
 
 navbarPage("Navbar!",
   
-  tabPanel(Background),
+  TabPanel("Home",
+           includeMarkdown("Zika_Home.rmd")),
+           
+           
+  tabPanel("Overview",
+           includeMarkdown("Zika_Overview.rmd")),
   
           
   tabPanel("Zika Cases in Pan-America",

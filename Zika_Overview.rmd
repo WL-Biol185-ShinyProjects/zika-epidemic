@@ -1,0 +1,37 @@
+---
+title: "Zika_Overview.rmd"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+## R Markdown
+
+This is an R Markdown document. Markdown is a simple formatting syntax for authoring HTML, PDF, and MS Word documents. For more details on using R Markdown see <http://rmarkdown.rstudio.com>.
+
+When you click the **Knit** button a document will be generated that includes both content as well as the output of any embedded R code chunks within the document. You can embed an R code chunk like this:
+
+```# Zika Virus Overview
+  The Zika virus is spread primarily by the bite of an infected *Aedes* species mosquito, but can also be transmitted from a pregnant woman to her fetus, through sex, and through blood transfusions. 
+  
+  Most people infected with Zika won't show symptoms, but the most common symptoms of Zika are: fever, rash, headache, joint pain, red eyes, and muscle pain. Sympotoms can last for several days to weeks, but are rarely fatal. Individuals with Zika usually do not requrie hospitalization and once they have been infected, are likely to be protected from future infections. 
+  
+  The biggest risk of the Zika virus is that infection during pregnancy can cause a birth defect called [microcephaly][id]. and other severe brain defects in the fetus. [Guillain-Barre syndrome][id2]. an uncommon sickness of the nervous system has also been reported in areas affected by Zika.Finally, Zika has also been linked to other problems such as miscarriage, stillbirth, and other birth defects. 
+  
+  Although there is no vaccine for Zika, the best way to prevent diseases spread by mosquitos is to protect yourself and your loved ones from mosquito bites. Wearing long-sleeved clothing and long pants lessens the area that a mosquito can bite. Use insect repellents approved by the Environmental Protection Agency (EPA) and follow the labelled product instructions. Stay in shelters from mosquitos, such as indoors or screened in areas. And finally prevent sexual transmission of Zika by using condoms or not having sex.  
+```
+
+## Including Plots
+
+You can also embed plots, for example:
+
+```{r pressure, echo=FALSE}
+plot(pressure)
+
+[id]: https://www.cdc.gov/ncbddd/birthdefects/microcephaly.html
+[id2]: https://www.cdc.gov/zika/healtheffects/gbs-qa.html
+```
+
+Note that the `echo = FALSE` parameter was added to the code chunk to prevent printing of the R code that generated the plot.
