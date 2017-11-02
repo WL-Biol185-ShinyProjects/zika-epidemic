@@ -1,9 +1,9 @@
 library(shiny)
 library(markdown)
 
-navbarPage("Navbar!",
+navbarPage("Zika",
   
-  TabPanel("Home",
+  tabPanel("Home",
            includeMarkdown("Zika_Home.rmd")),
            
            

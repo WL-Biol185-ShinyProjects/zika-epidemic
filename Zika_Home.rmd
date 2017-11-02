@@ -7,23 +7,9 @@ output: html_document
 knitr::opts_chunk$set(echo = TRUE)
 ```
 
-## R Markdown
+## Welcome to our page on the Zika epidemic in Pan America! 
 
-This is an R Markdown document. Markdown is a simple formatting syntax for authoring HTML, PDF, and MS Word documents. For more details on using R Markdown see <http://rmarkdown.rstudio.com>.
+![picture of mosquito](https://www.oakgov.com/health/PublishingImages/EH/Zika%20web%20rotator.jpg , height = "100px", width = "100px") 
+ 
+  This page provides important information regarding the Zika virus and tools to help you better understand the prevalance of the virus throughout Pan America. Our goal is to instill the importance and awareness of this disease to our viewers and to better prepare them to prevent the contraction of the disease, both for themselves and their loved ones.
 
-When you click the **Knit** button a document will be generated that includes both content as well as the output of any embedded R code chunks within the document. You can embed an R code chunk like this:
-
-```# Zika Virus
-  ## Welcome to our page on the Zika epidemic in Pan America! 
-  This page provides important information regarding the virus and tools to help you better understand the prevalance of the virus throughout Pan America. Our goal is to instill the importance of this disease to our viewers and to better prepare them to prevent the contraction of the disease, both for themselves and their loved ones.
-```
-
-## Including Plots
-
-You can also embed plots, for example:
-
-```{r pressure, echo=FALSE}
-plot(pressure)
-```
-
-Note that the `echo = FALSE` parameter was added to the code chunk to prevent printing of the R code that generated the plot.
