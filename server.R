@@ -9,14 +9,14 @@ library(shinythemes)
 Zika_Country_Data <- read_csv("~/zika-epidemic/Zika - Country Data.csv")
 Zika_State_Data<- read.csv("~/zika-epidemic/Zika - US State Data (2).csv")
 Zika_Country_Data$Date <- as.Date(Zika_Country_Data$Date, format = "%m/%d/%Y")
-geoJSON_map <- readRDS(file = "geoJSON_map.rds")
-geoJSON_map@data <- Zika_Country_Data
-pal  <- colorBin("YlOrRd", geoJSON_map@data)
+
+
 
 
 function(input, output, session) {
 
-  
+
+   
   output$Outbreak_Over_Time <- renderPlot({
     
     Zika_Country_Data %>%
@@ -24,22 +24,53 @@ function(input, output, session) {
       ggplot(aes(Date, Confirmed, color=Confirmed_congenital_syndrome)) +
       geom_point() +
       theme(axis.text.x = element_text(angle = 60, hjust = 1))
+    
   })
   
-  
+ ###########################################################################
+   
   output$Map_Outbreak_Over_Time <- renderLeaflet({
+    countries <- rgdal::readOGR("countries.geo.json", "OGRGeoJSON")
+    geoJSON_map <- readRDS(file = "geoJSON_map.rds")
+    map <- readRDS(file = "map.rds")
+    countryp@data <- Zika_Country_Data
+
+    pal1 <- colorNumeric(
+      palette = "YlOrRd",
+      domain = country@data$Confirmed)
     
+    labels <- sprintf(
+      "<strong>%s</strong><br/> Value: <strong>%g</strong>",
+      geoJSON_map$name, geoJSON_map@data[[input$Date]]
+    )  %>% lapply(htmltools::HTML)
   
     leaflet(data = geoJSON_map) %>%
       addTiles(options = tileOptions(noWrap = TRUE)) %>%
-      addPolygons(fillColor = ~pal(Confirmed)) %>%
-      
-      addLegend(pal = pal, Confirmed = ~density, opacity = 0.7, title = input$Confirmed,
-                position = "bottomright")
+      addPolygons(fillColor = ~pal(Confirmed),
+                  weight = 2,
+                  opacity = 1,
+                  color = "white",
+                  popup = country_popup,
+                  dashArray = "3",
+                  fillOpacity = 0.7,
+                  highlight = highlightOptions(
+                    weight = 5,
+                    color = "#666",
+                    dashArray = "",
+                    fillOpacity = 0.7,
+                    bringToFront = TRUE),
+                  label = labels,
+                  labelOptions = labelOptions(
+                    style = list("font-weight" = "normal", padding = "3px 8px"),
+                    textsize = "10px",
+                    direction = "auto")) %>%
+      addLegend(pal = pal, Date = ~density, opacity = 0.7, title = input$Date,
+                position = "bottomright") %>%
+      setView(map, lat = 38.0110306, lng = -110.4080342, zoom = 3)
     
-    
-  })
+    })
   
+  ############################################################################
   
   output$Outbreak_By_State <- renderPlot({
     
@@ -51,6 +82,7 @@ function(input, output, session) {
     
   })
 
+  ############################################################################
   
   output$Outbreak_Heatmap <-renderLeaflet({
     
@@ -86,6 +118,7 @@ function(input, output, session) {
                 title = NULL,
                 position = "bottomright") %>%
       setView(lat = 38.0110306, lng = -110.4080342, zoom = 3)
+    
   })
 
 }

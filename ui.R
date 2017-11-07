@@ -2,20 +2,21 @@ library(shiny)
 library(leaflet)
 library(markdown)
 geoJSON_map <- readRDS(file = "geoJSON_map.rds")
-
-
-navbarPage("Zika",
+map <- readRDS(file = "map.rds")
+countries <- rgdal::readOGR("countries.geo.json", "OGRGeoJSON")
 
 navbarPage("Zika Epidemic",
 
   
+           
   tabPanel("Home",
            includeMarkdown("Zika_Home.rmd")),
            
-           
   tabPanel("Overview",
            includeMarkdown("Zika_Overview.rmd")),
-          
+
+  
+            
   navbarMenu("Zika Cases in Pan-America",
               
       tabPanel("Graph Over Time"),
