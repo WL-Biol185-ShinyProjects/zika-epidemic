@@ -1,16 +1,22 @@
 library(shiny)
+library(leaflet)
 library(markdown)
 geoJSON_map <- readRDS(file = "geoJSON_map.rds")
+map <- readRDS(file = "map.rds")
+countries <- rgdal::readOGR("countries.geo.json", "OGRGeoJSON")
 
 navbarPage("Zika Epidemic",
+
   
+           
   tabPanel("Home",
            includeMarkdown("Zika_Home.rmd")),
            
-           
   tabPanel("Overview",
            includeMarkdown("Zika_Overview.rmd")),
-          
+
+  
+            
   navbarMenu("Zika Cases in Pan-America",
               
       tabPanel("Graph Over Time"),
@@ -23,8 +29,8 @@ navbarPage("Zika Epidemic",
               mainPanel(plotOutput("Outbreak_Over_Time"))
               ),
               
-      tabPanel("Heatmap Over Time"),
-              sliderInput(inputId = "Confirmed", 
+      tabPanel("Heatmap Over Time",
+              sliderInput(inputId = "Date", 
                           label= "Select a Date", 
                           11/17/16, 
                           10/05/17, 
@@ -43,9 +49,10 @@ navbarPage("Zika Epidemic",
                           timezone = NULL, 
                           dragRange = TRUE,
       
-    mainPanel(leafletOutput("Map_Outbreak_Over_Time"))
+              leafletOutput("Map_Outbreak_Over_Time")
+                          )
     
-  ),
+              ),
   
   
   
@@ -56,11 +63,15 @@ navbarPage("Zika Epidemic",
                        choices = unique(Zika_US_State_Data_2_$Region)
                        ),
  
-   mainPanel(plotOutput("Outbreak_By_State"))
-   ),
-  tabPanel
+             mainPanel(plotOutput("Outbreak_By_State"))
 
-  )
+          )
 
+            )
+  
+  tabPanel("United States Map of Zika",
+           leafletOutput("Outbreak_Heatmap")
+          )
+  
 )
   
