@@ -6,6 +6,7 @@ library(dplyr)
 library(htmltools)
 library(markdown)
 library(shinythemes)
+
 Zika_Country_Data <- read_csv("~/zika-epidemic/Zika - Country Data.csv")
 Zika_State_Data<- read.csv("~/zika-epidemic/Zika - US State Data (2).csv")
 Zika_Country_Data$Date <- as.Date(Zika_Country_Data$Date, format = "%m/%d/%Y")
@@ -52,16 +53,25 @@ function(input, output, session) {
   })
 
   
-  output$Outbreak_Heatmap <-renderLeaflet({
+
+###################################
+  
+  states <- rgdal::readOGR("States.JSON", "OGRGeoJSON")
+  state_data <- Zika_US_State_Data_2_
+  joinedData<-left_join(states@data, state_data, by= c("NAME"="States"))
+  states@data <- joinedData
     
-    states <- rgdal::readOGR("States.JSON", "OGRGeoJSON")
-    state_data <- Zika_US_State_Data_2_
-    states@data <- state_data
-    pal1 <- colorNumeric(
-      palette = "YlOrRd",
-      domain = states@data$Number_of_Cases)
+  pal1 <- colorNumeric(
+    palette = "YlOrRd",
+    domain = states@data$Number_of_Cases)
+  labels1 <- sprintf(
+      "<strong>%s</strong><br/>%g cases",
+      states@data$NAME, 
+      states@data$Number_of_Cases
+      ) %>% 
+      lapply(htmltools::HTML)
     
-    
+  output$Outbreak_Heatmap <-renderLeaflet({    
     leaflet(data = states) %>%
       addProviderTiles("OpenStreetMap.BlackAndWhite") %>%
       addPolygons(fillColor = ~pal1(Number_of_Cases), 
@@ -74,7 +84,7 @@ function(input, output, session) {
                     dashArray = "",
                     fillOpacity = 0.7,
                     bringToFront = TRUE),
-                  label = "labels",
+                  label = labels1,
                   labelOptions = labelOptions(
                     style = list("font-weight" = "normal", 
                                  padding = "3px 8px"),
