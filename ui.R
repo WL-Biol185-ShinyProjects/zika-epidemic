@@ -4,7 +4,12 @@ geoJSON_map <- readRDS(file = "geoJSON_map.rds")
 
 navbarPage("Zika Epidemic",
   
-  tabPanel("Background"),
+  tabPanel("Home",
+           includeMarkdown("Zika_Home.rmd")),
+           
+           
+  tabPanel("Overview",
+           includeMarkdown("Zika_Overview.rmd")),
           
   navbarMenu("Zika Cases in Pan-America",
               
