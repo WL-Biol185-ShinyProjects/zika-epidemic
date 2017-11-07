@@ -85,8 +85,6 @@ function(input, output, session) {
 
   ############################################################################
   
-
-###################################
   
   states <- rgdal::readOGR("States.JSON", "OGRGeoJSON")
   state_data <- Zika_US_State_Data_2_

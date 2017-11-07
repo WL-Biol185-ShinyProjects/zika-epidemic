@@ -65,14 +65,13 @@ navbarPage("Zika Epidemic",
  
              mainPanel(plotOutput("Outbreak_By_State"))
 
-   )
+          )
 
-)
-
-  ),
+            )
   
   tabPanel("United States Map of Zika",
            leafletOutput("Outbreak_Heatmap")
-  )
-) 
+          )
+  
+)
   
