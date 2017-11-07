@@ -6,10 +6,12 @@ library(dplyr)
 library(htmltools)
 library(markdown)
 library(shinythemes)
-
 Zika_Country_Data <- read_csv("~/zika-epidemic/Zika - Country Data.csv")
 Zika_State_Data<- read.csv("~/zika-epidemic/Zika - US State Data (2).csv")
 Zika_Country_Data$Date <- as.Date(Zika_Country_Data$Date, format = "%m/%d/%Y")
+geoJSON_map <- readRDS(file = "geoJSON_map.rds")
+geoJSON_map@data <- Zika_Country_Data
+pal  <- colorBin("YlOrRd", geoJSON_map@data)
 
 
 function(input, output, session) {
@@ -23,8 +25,22 @@ function(input, output, session) {
       geom_point() +
       theme(axis.text.x = element_text(angle = 60, hjust = 1))
   })
-
-
+  
+  
+  output$Map_Outbreak_Over_Time <- renderLeaflet({
+    
+  
+    leaflet(data = geoJSON_map) %>%
+      addTiles(options = tileOptions(noWrap = TRUE)) %>%
+      addPolygons(fillColor = ~pal(Confirmed)) %>%
+      
+      addLegend(pal = pal, Confirmed = ~density, opacity = 0.7, title = input$Confirmed,
+                position = "bottomright")
+    
+    
+  })
+  
+  
   output$Outbreak_By_State <- renderPlot({
     
     Zika_State_Data %>%
@@ -34,6 +50,7 @@ function(input, output, session) {
       theme(axis.text.x = element_text(angle = 60, hjust = 1))
     
   })
+
   
   output$Outbreak_Heatmap <-renderLeaflet({
     
@@ -70,5 +87,6 @@ function(input, output, session) {
                 position = "bottomright") %>%
       setView(lat = 38.0110306, lng = -110.4080342, zoom = 3)
   })
+
 }
 
