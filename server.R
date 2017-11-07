@@ -6,6 +6,8 @@ Zika_State_Data<- read.csv("~/zika-epidemic/Zika - US State Data (2).csv")
 Zika_Country_Data$Date <- as.Date(Zika_Country_Data$Date, format = "%m/%d/%Y")
 geoJSON_map <- readRDS(file = "geoJSON_map.rds")
 geoJSON_map@data <- Zika_Country_Data
+pal  <- colorBin("YlOrRd", geoJSON_map@data)
+
 
 function(input, output, session) {
 
@@ -19,10 +21,10 @@ function(input, output, session) {
       theme(axis.text.x = element_text(angle = 60, hjust = 1))
   })
   
+  
   output$Map_Outbreak_Over_Time <- renderLeaflet({
     
-    pal  <- colorBin("YlOrRd", geoJSON_map@data)
-    
+  
     leaflet(data = geoJSON_map) %>%
       addTiles(options = tileOptions(noWrap = TRUE)) %>%
       addPolygons(fillColor = ~pal(Confirmed)) %>%
@@ -33,10 +35,7 @@ function(input, output, session) {
     
   })
   
-}
-
-
-
+  
   output$Outbreak_By_State <- renderPlot({
     
     Zika_State_Data %>%
@@ -47,8 +46,6 @@ function(input, output, session) {
     
   })
    
-  geoJSON_map <- readRDS(file = "geoJSON_map.rds")
-  geoJSON_map@data <- Zika_Country_Data
-  pal  <- colorBin("YlOrRd", geoJSON_map@data)
+
   
 }

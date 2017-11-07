@@ -23,8 +23,8 @@ navbarPage("Zika Epidemic",
               mainPanel(plotOutput("Outbreak_Over_Time"))
               ),
               
-      tabPanel("Heatmap Over Time"),
-              sliderInput(inputId = "Confirmed", 
+      tabPanel("Heatmap Over Time",
+              sliderInput(inputId = "Date", 
                           label= "Select a Date", 
                           11/17/16, 
                           10/05/17, 
@@ -43,9 +43,10 @@ navbarPage("Zika Epidemic",
                           timezone = NULL, 
                           dragRange = TRUE,
       
-    mainPanel(leafletOutput("Map_Outbreak_Over_Time"))
+              leafletOutput("Map_Outbreak_Over_Time")
+                          )
     
-  ),
+              ),
   
   
   
