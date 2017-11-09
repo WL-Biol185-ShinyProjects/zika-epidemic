@@ -1,9 +1,6 @@
 library(shiny)
 library(leaflet)
 library(markdown)
-geoJSON_map <- readRDS(file = "geoJSON_map.rds")
-map <- readRDS(file = "map.rds")
-countries <- rgdal::readOGR("countries.geo.json", "OGRGeoJSON")
 
 navbarPage("Zika Epidemic",
 
@@ -19,22 +16,23 @@ navbarPage("Zika Epidemic",
             
   navbarMenu("Zika Cases in Pan-America",
               
-      tabPanel("Graph Over Time"),
-              sidebarLayout(
-                sidebarPanel(
-                selectInput( inputId = 'Country',
-                   label   = 'Select a Country',
-                   choices = unique(Zika_Country_Data$Country_Territory)
-                     )),
-              mainPanel(plotOutput("Outbreak_Over_Time"))
-              ),
+    tabPanel("Graph Over Time",
+             sidebarLayout(
+               sidebarPanel(
+                 selectInput( inputId = 'Country',
+                              label   = 'Select a Country',
+                              choices = unique(Zika_Country_Data$Country_Territory)
+                            )
+                          ),
+               mainPanel(plotOutput("Outbreak_Over_Time"))
+                          )
+             ),
+             
               
       tabPanel("Heatmap Over Time",
               sliderInput(inputId = "Date", 
-                          label= "Select a Date", 
-                          11/17/16, 
-                          10/05/17, 
-                          11/17/16, 
+                          label= "Select a Date",
+                          min=as.Date(),
                           step = NULL, 
                           round = FALSE,
                           format = NULL,
@@ -47,16 +45,16 @@ navbarPage("Zika Epidemic",
                           post = NULL, 
                           timeFormat = NULL,
                           timezone = NULL, 
-                          dragRange = TRUE,
-      
+                          dragRange = TRUE
+                          ),
               leafletOutput("Map_Outbreak_Over_Time")
-                          )
     
-              ),
+              )
+            ),
   
-  
-  
-  tabPanel("Zika Cases in United States",
+  navbarMenu("Zika Cases in United States",
+             
+  tabPanel("Graph of Cases in US",
            selectInput(inputId = 'Region',
                        label= 'Select a Region',
                        multiple= TRUE,
@@ -65,13 +63,12 @@ navbarPage("Zika Epidemic",
  
              mainPanel(plotOutput("Outbreak_By_State"))
 
-          )
-
-            )
+          ),
   
   tabPanel("United States Map of Zika",
            leafletOutput("Outbreak_Heatmap")
           )
+        )
   
 )
   
