@@ -75,7 +75,7 @@ function(input, output, session) {
   output$Outbreak_By_State <- renderPlot({
     
     Zika_State_Data %>%
-      filter(Region == input$Region) %>%
+      filter(Region %in% input$Region) %>%
       ggplot(aes (States, Number_of_Cases)) +
       geom_point() +
       theme(axis.text.x = element_text(angle = 60, hjust = 1))
