@@ -12,15 +12,15 @@ knitr::opts_chunk$set(echo = TRUE)
   
 **Symptoms**
   
-  Most people infected with Zika won't show symptoms, but the most common symptoms of Zika are: fever, rash, headache, joint pain, red eyes, and muscle pain. Sympotoms can last for several days to weeks, but are rarely fatal. Individuals with Zika usually do not requrie hospitalization and once they have been infected, are likely to be protected from future infections. 
+  Most people infected with Zika do not show symptoms, but the most common symptoms of Zika are fever, rash, headache, joint pain, red eyes, and muscle pain. Sympotoms can last for several days to weeks, but are rarely fatal. Individuals with Zika usually do not requrie hospitalization and are likely to be protected from future infections once they have contracted the virus. 
   
 **Risk**
  
-  The biggest risk of the Zika virus is that infection during pregnancy can cause a birth defect called [microcephaly][id]. and other severe brain defects in the fetus. [Guillain-Barre syndrome][id2]. an uncommon sickness of the nervous system has also been reported in areas affected by Zika.Finally, Zika has also been linked to other problems such as miscarriage, stillbirth, and other birth defects. 
+  Zika poses the biggest risk to reproductive age and pregnant women. Zika causes birth defets, including called [microcephaly][id]. and other severe brain defects in the fetus, other problems such as miscarriage, stillbirth, and other birth defects.  [Guillain-Barre syndrome][id2]., an uncommon sickness of the nervous system has also been reported in areas affected by Zika. 
   
 **Treatment/Prevention**
  
-  Although there is no vaccine for Zika, the best way to prevent diseases spread by mosquitos is to protect yourself and your loved ones from mosquito bites. Wearing long-sleeved clothing and long pants lessens the area that a mosquito can bite. Use insect repellents approved by the Environmental Protection Agency (EPA) and follow the labelled product instructions. Stay in shelters from mosquitos, such as indoors or screened in areas. And finally prevent sexual transmission of Zika by using condoms or not having sex.  
+  Although there is no vaccine for Zika, the best way to prevent Zika is to minimize exposure to mosquitos by wearing long-sleeved clothing and long pants, using insect repellents approved by the Environmental Protection Agency (EPA), and staying in shelters from mosquitos, such as indoors or screened in areas. Prevent sexual transmission of Zika by using condoms or abstaining from sex
 
 [id]: https://www.cdc.gov/ncbddd/birthdefects/microcephaly.html
 [id2]: https://www.cdc.gov/zika/healtheffects/gbs-qa.html
