@@ -7,10 +7,12 @@ navbarPage("Zika Epidemic",
   
            
   tabPanel("Home",
-           includeMarkdown("Zika_Home.rmd")),
+           includeMarkdown("Zika_Home.rmd")
+          ),
            
   tabPanel("Overview",
-           includeMarkdown("Zika_Overview.rmd")),
+           includeMarkdown("Zika_Overview.rmd")
+           ),
 
   
             
@@ -23,17 +25,19 @@ navbarPage("Zika Epidemic",
                               label   = 'Select a Country',
                               choices = unique(Zika_Country_Data$Country_Territory)
                             )
-                          ),
+                           ),
                mainPanel(plotOutput("Outbreak_Over_Time"))
                           )
              ),
              
               
       tabPanel("Heatmap Over Time",
-              sliderInput(inputId = "Date", 
+              sliderInput(inputId = 'Date', 
                           label= "Select a Date",
-                          min=as.Date(),
-                          step = NULL, 
+                          min(Zika_Country_Data$Date),
+                          max(Zika_Country_Data$Date),
+                          min(Zika_Country_Data$Date),
+                          step = 14, 
                           round = FALSE,
                           format = NULL,
                           locale = NULL, 
@@ -50,7 +54,7 @@ navbarPage("Zika Epidemic",
               leafletOutput("Map_Outbreak_Over_Time")
     
               )
-            ),
+             ),
   
   navbarMenu("Zika Cases in United States",
              
@@ -68,7 +72,7 @@ navbarPage("Zika Epidemic",
   tabPanel("United States Map of Zika",
            leafletOutput("Outbreak_Heatmap")
           )
-        )
+           )
   
-)
+        )
   

@@ -10,8 +10,7 @@ library(tidyverse)
 
 Zika_Country_Data <- read_csv("~/zika-epidemic/Zika - Country Data.csv")
 Zika_State_Data<- read.csv("~/zika-epidemic/Zika - US State Data (2).csv")
-Zika_Country_Data$Date <- as.Date(Zika_Country_Data$Date, format = "%m/%d/%Y")
-
+Zika_Country_Data$Date <- as.Date(Zika_Country_Data$Date, format = "%m/%d/%y")
 
 function(input, output, session) {
 
@@ -35,13 +34,14 @@ function(input, output, session) {
 
     pal1 <- colorNumeric(
       palette = "YlOrRd",
-      domain = country@data$Confirmed)
+      domain = country@data$Confirmed
+                        )
     
     labels2 <- sprintf(
       "<strong>%s</strong><br/>%g cases",
       country@data$NAME, 
       country@data$Number_of_Cases
-    ) %>% 
+                       ) %>% 
       lapply(htmltools::HTML)
     
     leaflet(data = geoJSON_map) %>%
@@ -68,7 +68,7 @@ function(input, output, session) {
                 position = "bottomright") %>%
       setView(map, lat = 38.0110306, lng = -110.4080342, zoom = 3)
     
-    })
+                                                })
   
   ############################################################################
   
