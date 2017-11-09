@@ -6,18 +6,15 @@ library(dplyr)
 library(htmltools)
 library(markdown)
 library(shinythemes)
+library(tidyverse)
 
 Zika_Country_Data <- read_csv("~/zika-epidemic/Zika - Country Data.csv")
 Zika_State_Data<- read.csv("~/zika-epidemic/Zika - US State Data (2).csv")
 Zika_Country_Data$Date <- as.Date(Zika_Country_Data$Date, format = "%m/%d/%Y")
 
 
-
-
 function(input, output, session) {
 
-
-   
   output$Outbreak_Over_Time <- renderPlot({
     
     Zika_Country_Data %>%
@@ -32,19 +29,21 @@ function(input, output, session) {
    
   output$Map_Outbreak_Over_Time <- renderLeaflet({
     countries <- rgdal::readOGR("countries.geo.json", "OGRGeoJSON")
-    geoJSON_map <- readRDS(file = "geoJSON_map.rds")
-    map <- readRDS(file = "map.rds")
-    countryp@data <- Zika_Country_Data
+    country_data <- Zika_Country_Data
+    joinedDatacountry<-left_join(country@data, country_data, by= c("NAME"="Country"))
+    country@data <- joinedDatacountry
 
     pal1 <- colorNumeric(
       palette = "YlOrRd",
       domain = country@data$Confirmed)
     
-    labels <- sprintf(
-      "<strong>%s</strong><br/> Value: <strong>%g</strong>",
-      geoJSON_map$name, geoJSON_map@data[[input$Date]]
-    )  %>% lapply(htmltools::HTML)
-  
+    labels2 <- sprintf(
+      "<strong>%s</strong><br/>%g cases",
+      country@data$NAME, 
+      country@data$Number_of_Cases
+    ) %>% 
+      lapply(htmltools::HTML)
+    
     leaflet(data = geoJSON_map) %>%
       addTiles(options = tileOptions(noWrap = TRUE)) %>%
       addPolygons(fillColor = ~pal(Confirmed),
@@ -60,7 +59,7 @@ function(input, output, session) {
                     dashArray = "",
                     fillOpacity = 0.7,
                     bringToFront = TRUE),
-                  label = labels,
+                  label = labels2,
                   labelOptions = labelOptions(
                     style = list("font-weight" = "normal", padding = "3px 8px"),
                     textsize = "10px",
