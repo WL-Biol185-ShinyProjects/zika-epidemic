@@ -28,10 +28,15 @@ function(input, output, session) {
    
   output$Map_Outbreak_Over_Time <- renderLeaflet({
     country <- rgdal::readOGR("countries.geo.json", "OGRGeoJSON")
-    country_data <- Zika_Country_Data
-    joinedDatacountry<-left_join(country@data, country_data, by= c("name"="Country_Territory"))
-    country@data <- joinedDatacountry
-    final_country_join <- na.omit(country@data)
+    country_data <- read_csv("Zika - Country Data.csv")
+    
+    country_data_Filtered<- 
+      country_data %>% filter_("Date"==input$Date)
+    
+    country@data <- 
+      country@data %>%
+      left_join(country_data_Filtered, by= c("name"="Country_Territory")) %>%
+        na.omit(country@data)
 
     pal1 <- colorNumeric(
       palette = "YlOrRd",
@@ -45,7 +50,7 @@ function(input, output, session) {
                        ) %>% 
       lapply(htmltools::HTML)
     
-    leaflet(data = geoJSON_map) %>%
+    leaflet(data = country) %>%
       addTiles(options = tileOptions(noWrap = TRUE)) %>%
       addPolygons(fillColor = ~pal(Confirmed),
                   weight = 2,
@@ -130,5 +135,3 @@ function(input, output, session) {
   })
 
 }
-
-
