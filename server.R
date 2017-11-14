@@ -50,7 +50,7 @@ function(input, output, session) {
                        ) %>% 
       lapply(htmltools::HTML)
     
-    leaflet(data = country@data ) %>%
+    leaflet(data = country ) %>%
       addTiles(options = tileOptions(noWrap = TRUE)) %>%
       addPolygons(fillColor = ~pal(Confirmed.x),
                   weight = 2,
