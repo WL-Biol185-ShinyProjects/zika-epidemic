@@ -7,7 +7,7 @@ output: html_document
 knitr::opts_chunk$set(echo = TRUE)
 ```
 
-## Welcome to our page on the Zika epidemic in Pan America! 
+## Zika Incidence in Pan America 
 
 <img src="https://www.oakgov.com/health/PublishingImages/EH/Zika%20web%20rotator.jpg" height = "10000" width = "10000">
  
