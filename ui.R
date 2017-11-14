@@ -51,14 +51,14 @@ navbarPage("Zika Epidemic",
                           timezone = NULL, 
                           dragRange = TRUE
                           ),
-              leafletOutput("Map_Outbreak_Over_Time")
+                leafletOutput("Map_Outbreak_Over_Time")
     
               )
              ),
   
   navbarMenu("Zika Cases in United States",
              
-  tabPanel("Graph of Cases in US",
+        tabPanel("Graph of Cases in US",
            selectInput(inputId = 'Region',
                        label= 'Select a Region',
                        multiple= TRUE,
@@ -69,7 +69,7 @@ navbarPage("Zika Epidemic",
 
           ),
   
-  tabPanel("United States Map of Zika",
+        tabPanel("United States Map of Zika",
            leafletOutput("Outbreak_Heatmap")
           )
            )
