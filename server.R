@@ -30,10 +30,12 @@ function(input, output, session) {
     country <- rgdal::readOGR("countries.geo.json", "OGRGeoJSON")
     country_data <- read_csv("Zika - Country Data.csv")
     
+    filteredcountry@data <- Zika_Country_Data %>%
+      filter_("Date" == input$Date)
     country@data <- 
-      country@data %>%
-      left_join(country_data, by= c("name"="Country_Territory")) %>%
-        na.omit(country@data)
+      filteredcountry@data %>%
+        left_join(country_data, by= c("name"="Country_Territory")) %>%
+          na.omit(country@data)
     
 
     pal1 <- colorNumeric(
