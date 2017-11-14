@@ -27,10 +27,11 @@ function(input, output, session) {
  ###########################################################################
    
   output$Map_Outbreak_Over_Time <- renderLeaflet({
-    countries <- rgdal::readOGR("countries.geo.json", "OGRGeoJSON")
+    country <- rgdal::readOGR("countries.geo.json", "OGRGeoJSON")
     country_data <- Zika_Country_Data
-    joinedDatacountry<-left_join(country@data, country_data, by= c("NAME"="Country"))
+    joinedDatacountry<-left_join(country@data, country_data, by= c("name"="Country_Territory"))
     country@data <- joinedDatacountry
+    final_country_join <- na.omit(country@data)
 
     pal1 <- colorNumeric(
       palette = "YlOrRd",
