@@ -38,19 +38,19 @@ function(input, output, session) {
 
     pal1 <- colorNumeric(
       palette = "YlOrRd",
-      domain = country@data$Confirmed
+      domain = country@data$Confirmed.x
                         )
     
     labels2 <- sprintf(
       "<strong>%s</strong><br/>%g cases",
-      country@data$NAME, 
-      country@data$Number_of_Cases
+      country@data$name, 
+      country@data$Confirmed.x
                        ) %>% 
       lapply(htmltools::HTML)
     
-    leaflet(data = country) %>%
+    leaflet(data = country@data ) %>%
       addTiles(options = tileOptions(noWrap = TRUE)) %>%
-      addPolygons(fillColor = ~pal(Confirmed),
+      addPolygons(fillColor = ~pal(Confirmed.x),
                   weight = 2,
                   opacity = 1,
                   color = "white",
