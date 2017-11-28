@@ -25,15 +25,16 @@ function(input, output, session) {
   })
   
  ###########################################################################
-   
-  output$Map_Outbreak_Over_Time <- renderLeaflet({
-    country <- rgdal::readOGR("countries.geo.json", "OGRGeoJSON")
-    country_data <- read_csv("Zika - Country Data.csv")
+  country <- rgdal::readOGR("countries.geo.json", "OGRGeoJSON")
+  country_data <- read_csv("Zika - Country Data.csv")
     
-    filteredcountry@data <- Zika_Country_Data %>%
+  output$Map_Outbreak_Over_Time <- renderLeaflet({
+ 
+    
+    country_data_filter <- country_data %>%
       filter_("Date" == input$Date)
     country@data <- 
-      filteredcountry@data %>%
+      country@data %>%
         left_join(country_data, by= c("name"="Country_Territory")) %>%
           na.omit(country@data)
 
