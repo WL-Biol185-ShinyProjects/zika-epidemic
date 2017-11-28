@@ -6,7 +6,7 @@ navbarPage("Zika Epidemic",
 
            
   tabPanel("Home",
-           includeHTML("Zika_Home_Final.html")
+           includeMarkdown("Zika_Home.rmd")
           ),
            
   tabPanel("Overview",
@@ -31,25 +31,25 @@ navbarMenu("Zika Cases in Pan-America",
              
               
       tabPanel("Heatmap Over Time",
-              sliderInput(inputId = 'Date', 
-                          label= "Select a Date",
-                          min(Zika_Country_Data$Date),
-                          max(Zika_Country_Data$Date),
-                          min(Zika_Country_Data$Date),
-                          step = 14, 
-                          round = FALSE,
-                          format = NULL,
-                          locale = NULL, 
-                          ticks = TRUE, 
-                          animate = TRUE,
-                          width = NULL, 
-                          sep = ",",
-                          pre = NULL, 
-                          post = NULL, 
-                          timeFormat = NULL,
-                          timezone = NULL, 
-                          dragRange = TRUE
-                          ),
+               sliderInput(inputId = 'Date', 
+                           label = "Select a Date",
+                           min(Zika_Country_Data$Date),
+                           max(Zika_Country_Data$Date),
+                           min(Zika_Country_Data$Date),
+                           step = 14, 
+                           round = FALSE,
+                           format = NULL,
+                           locale = NULL, 
+                           ticks = TRUE, 
+                           animate = TRUE,
+                           width = NULL, 
+                           sep = ",",
+                           pre = NULL, 
+                           post = NULL, 
+                           timeFormat = NULL,
+                           timezone = NULL, 
+                           dragRange = TRUE
+                           ),
               leafletOutput("Map_Outbreak_Over_Time")
     
               )
