@@ -39,21 +39,18 @@ function(input, output, session) {
           na.omit(country@data)
     
 
-    pal1 <- colorNumeric(
-      palette = "YlOrRd",
-      domain = country@data$Confirmed.x
-                        )
+    pal1 <-  colorBin("YlOrRd", country@data)
     
     labels2 <- sprintf(
       "<strong>%s</strong><br/>%g cases",
       country@data$name, 
-      country@data$Confirmed.x
-                       ) %>% 
+      country@data$Confirmed
+                      ) %>% 
       lapply(htmltools::HTML)
     
     leaflet(data = country ) %>%
-      addTiles(options = tileOptions(noWrap = TRUE)) %>%
-      addPolygons(fillColor = ~pal(Confirmed.x),
+      addProviderTiles("OpenStreetMap.BlackAndWhite") %>%
+      addPolygons(fillColor = ~pal(Confirmed),
                   weight = 2,
                   opacity = 1,
                   color = "white",
