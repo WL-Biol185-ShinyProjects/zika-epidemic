@@ -6,7 +6,7 @@ navbarPage("Zika Epidemic",
 
            
   tabPanel("Home",
-           includeMarkdown("Zika_Home.rmd")
+           includeHTML("picture_of_mosquito.html")
           ),
            
   tabPanel("Overview",
