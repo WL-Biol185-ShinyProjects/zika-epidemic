@@ -4,10 +4,9 @@ library(markdown)
 
 navbarPage("Zika Epidemic",
 
-  
            
   tabPanel("Home",
-           includeHTML("Zika_Home.html")
+           includeMarkdown("Zika_Home.rmd")
           ),
            
   tabPanel("Overview",
@@ -16,7 +15,7 @@ navbarPage("Zika Epidemic",
 
   
             
-  navbarMenu("Zika Cases in Pan-America",
+navbarMenu("Zika Cases in Pan-America",
               
     tabPanel("Graph Over Time",
              sidebarLayout(
@@ -28,7 +27,7 @@ navbarPage("Zika Epidemic",
                            ),
                mainPanel(plotOutput("Outbreak_Over_Time"))
                           )
-             ),
+            ),
              
               
       tabPanel("Heatmap Over Time",

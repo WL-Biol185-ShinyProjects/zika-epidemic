@@ -30,13 +30,12 @@ function(input, output, session) {
     country <- rgdal::readOGR("countries.geo.json", "OGRGeoJSON")
     country_data <- read_csv("Zika - Country Data.csv")
     
-    country_data_Filtered<- 
-      country_data %>% filter_("Date"==input$Date)
-    
+    filteredcountry@data <- Zika_Country_Data %>%
+      filter_("Date" == input$Date)
     country@data <- 
-      country@data %>%
-      left_join(country_data_Filtered, by= c("name"="Country_Territory")) %>%
-        na.omit(country@data)
+      filteredcountry@data %>%
+        left_join(country_data, by= c("name"="Country_Territory")) %>%
+          na.omit(country@data)
 
     pal1 <- colorNumeric(
       palette = "YlOrRd",
@@ -50,7 +49,7 @@ function(input, output, session) {
                        ) %>% 
       lapply(htmltools::HTML)
     
-    leaflet(data = country@data ) %>%
+    leaflet(data = country ) %>%
       addTiles(options = tileOptions(noWrap = TRUE)) %>%
       addPolygons(fillColor = ~pal(Confirmed.x),
                   weight = 2,
