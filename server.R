@@ -26,7 +26,7 @@ function(input, output, session) {
   
  ###########################################################################
   country <- rgdal::readOGR("countries.geo.json", "OGRGeoJSON")
-  country_data <- read_csv("Zika - Country Data.csv")
+    
     
   output$Map_Outbreak_Over_Time <- renderLeaflet({
  
@@ -35,9 +35,8 @@ function(input, output, session) {
       filter_("Date" == input$Date)
     country@data <- 
       country@data %>%
-        left_join(country_data, by= c("name"="Country_Territory")) %>%
+        left_join(Zika_Country_Data$Date, by= c("name"="Country_Territory")) %>%
           na.omit(country@data)
-    
 
     pal1 <-  colorBin("YlOrRd", country@data)
     
@@ -133,4 +132,3 @@ function(input, output, session) {
   })
 
 }
-

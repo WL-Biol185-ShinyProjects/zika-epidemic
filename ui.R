@@ -31,13 +31,37 @@ navbarMenu("Zika Cases in Pan-America",
              
               
       tabPanel("Heatmap Over Time",
+<<<<<<< HEAD
               leafletOutput("Map_Outbreak_Over_Time")
+=======
+              sliderInput(inputId = 'Date', 
+                          label= "Select a Date",
+                          min(Zika_Country_Data$Date),
+                          max(Zika_Country_Data$Date),
+                          min(Zika_Country_Data$Date),
+                          step = 14, 
+                          round = FALSE,
+                          format = NULL,
+                          locale = NULL, 
+                          ticks = TRUE, 
+                          animate = TRUE,
+                          width = NULL, 
+                          sep = ",",
+                          pre = NULL, 
+                          post = NULL, 
+                          timeFormat = NULL,
+                          timezone = NULL, 
+                          dragRange = TRUE
+                          ),
+                leafletOutput("Map_Outbreak_Over_Time")
+    
+>>>>>>> f31acb0f69dbcca9bdb16de1ae8052c2edb4d1e9
               )
              ),
   
   navbarMenu("Zika Cases in United States",
              
-  tabPanel("Graph of Cases in US",
+        tabPanel("Graph of Cases in US",
            selectInput(inputId = 'Region',
                        label= 'Select a Region',
                        multiple= TRUE,
@@ -48,7 +72,7 @@ navbarMenu("Zika Cases in Pan-America",
 
           ),
   
-  tabPanel("United States Map of Zika",
+        tabPanel("United States Map of Zika",
            leafletOutput("Outbreak_Heatmap")
           )
            )
