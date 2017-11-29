@@ -26,20 +26,21 @@ function(input, output, session) {
   
  ###########################################################################
   country <- rgdal::readOGR("countries.geo.json", "OGRGeoJSON")
-    
-    
+   
   output$Map_Outbreak_Over_Time <- renderLeaflet({
- 
     
-    country_data_filter <- country_data %>%
+    Zika_Country_Data <- Zika_Country_Data %>%
       filter_("Date" == input$Date)
     country@data <- 
       country@data %>%
-        left_join(Zika_Country_Data$Date, by= c("name"="Country_Territory")) %>%
-          na.omit(country@data)
-
-    pal1 <-  colorBin("YlOrRd", country@data)
+      left_join(Zika_Country_Data, by= c("name"="Country_Territory")) %>%
+      na.omit(country@data)
     
+    pal1 <- colorNumeric(
+      palette = "YlOrRd",
+      domain = country@data$Confirmed
+                        )
+
     labels2 <- sprintf(
       "<strong>%s</strong><br/>%g cases",
       country@data$name, 
@@ -48,7 +49,7 @@ function(input, output, session) {
       lapply(htmltools::HTML)
     
     leaflet(data = country ) %>%
-      addProviderTiles("OpenStreetMap.BlackAndWhite") %>%
+      addTiles(options = tileOptions(noWrap = TRUE)) %>%
       addPolygons(fillColor = ~pal(Confirmed),
                   weight = 2,
                   opacity = 1,
@@ -86,7 +87,7 @@ function(input, output, session) {
   })
 
   ############################################################################
-  
+  ##States Map##
   
   states <- rgdal::readOGR("States.JSON", "OGRGeoJSON")
   state_data <- Zika_US_State_Data_2_

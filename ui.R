@@ -31,9 +31,6 @@ navbarMenu("Zika Cases in Pan-America",
              
               
       tabPanel("Heatmap Over Time",
-<<<<<<< HEAD
-              leafletOutput("Map_Outbreak_Over_Time")
-=======
               sliderInput(inputId = 'Date', 
                           label= "Select a Date",
                           min(Zika_Country_Data$Date),
@@ -55,7 +52,6 @@ navbarMenu("Zika Cases in Pan-America",
                           ),
                 leafletOutput("Map_Outbreak_Over_Time")
     
->>>>>>> f31acb0f69dbcca9bdb16de1ae8052c2edb4d1e9
               )
              ),
   
