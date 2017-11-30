@@ -29,16 +29,13 @@ function(input, output, session) {
 
    output$Map_Outbreak_Over_Time <- renderLeaflet({
 
-    # Zika_Country_Data <- Zika_Country_Data %>%
-    #   filter_("Date" == input$Date)
-
     Zika_Country_Data <- Zika_Country_Data[ Zika_Country_Data$Date == input$Date , ]
-
-    country@data <-
-      country@data %>%
-      left_join(Zika_Country_Data, by= c("name"="Country_Territory")) %>%
-      na.omit(country@data)
-
+    
+    country_data <- Zika_Country_Data
+    joinedDataCountry<-left_join(country@data, country_data, by= c("name"="Country_Territory"))
+    country@data <- joinedDataCountry
+    na.omit(country@data)
+    
     pal2 <- colorNumeric(
       palette = "YlOrRd",
       domain = country@data$Confirmed
@@ -75,8 +72,7 @@ function(input, output, session) {
                 opacity = 0.7,
                 title = input$Date,
                 position = "bottomright") %>%
-      setView(map, lat = 38.0110306, lng = -110.4080342, zoom = 3)
-
+      setView(map, lat = 38.0110306, lng = -110.4080342, zoom = 1.5)
                                                 })
   
   ############################################################################
@@ -128,7 +124,13 @@ function(input, output, session) {
                                  padding = "3px 8px"),
                     textsize = "15px",
                     direction = "auto")) %>%
+          addLegend(pal = pal1, 
+                    values = ~Number_of_Cases, 
+                    opacity = 0.7, 
+                    title = NULL,
+                   position = "bottomright") %>%
+          setView(lat = 38.0110306, lng = -110.4080342, zoom = 3)
 
-       })
-
-}
+      })
+  
+    }
