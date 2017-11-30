@@ -54,7 +54,7 @@ function(input, output, session) {
                   weight = 2,
                   opacity = 1,
                   color = "white",
-                  popup = country_popup,
+                  #popup = country_popup,
                   dashArray = "3",
                   fillOpacity = 0.7,
                   highlight = highlightOptions(
