@@ -24,6 +24,19 @@ function(input, output, session) {
     
   })
   
+  output$info <- renderText({
+    xy_str <- function(e) {
+      if(is.null(e)) return ("NULL\n")
+      paste0("x=" , round(e$x, 1), " y=", round(e$y, 1), "\n")
+    }
+    xy_range.str <- function(e) {
+      if(is.null(e)) return("NULL\n")
+      paste0("xmin=", round(e$xmin, 1), "xmax=", round(e$xmax, 1),
+             "ymin=", round(e$ymin, 1), "ymax=", round(e$ymax, 1))
+    }
+    paste0("click: ", xy_str(input$plot_click))
+  })
+
  ###########################################################################
   country <- rgdal::readOGR("countries.geo.json", "OGRGeoJSON")
   country_data <- read_csv("Zika - Country Data.csv")
@@ -88,6 +101,7 @@ function(input, output, session) {
       theme(axis.text.x = element_text(angle = 60, hjust = 1))
     
   })
+
 
   ############################################################################
   
