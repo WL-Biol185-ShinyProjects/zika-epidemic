@@ -2,6 +2,10 @@ library(shiny)
 library(leaflet)
 library(markdown)
 
+Zika_Country_Data <- read_csv("Zika - Country Data.csv")
+Zika_State_Data<- read.csv("Zika - US State Data (2).csv")
+Zika_Country_Data$Date <- as.Date(Zika_Country_Data$Date, format = "%m/%d/%y")
+
 navbarPage("Zika Epidemic",
 
            
@@ -46,8 +50,8 @@ navbarMenu("Zika Cases in Pan-America",
                           sep = ",",
                           pre = NULL, 
                           post = NULL, 
-                          timeFormat = NULL,
-                          timezone = NULL, 
+                          timeFormat = ,
+                          timezone = , 
                           dragRange = TRUE
                           ),
                 leafletOutput("Map_Outbreak_Over_Time")
