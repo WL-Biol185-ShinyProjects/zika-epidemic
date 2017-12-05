@@ -11,6 +11,8 @@ library(tidyverse)
 Zika_Country_Data <- read_csv("Zika - Country Data.csv")
 Zika_State_Data<- read.csv("Zika - US State Data (2).csv")
 Zika_Country_Data$Date <- as.Date(Zika_Country_Data$Date, format = "%m/%d/%y")
+Zika_Country_Data$logcountry <- log(Zika_Country_Data$Confirmed) 
+Zika_Country_Data$logcountry [Zika_Country_Data$logcountry==-Inf] <- 0
 
 
 function(input, output, session) {
@@ -40,19 +42,19 @@ function(input, output, session) {
     na.omit(country@data)
     
     pal2 <- colorNumeric(
-      palette = "YlOrRd",
+      palette = c("#E3FF33", "#FF3342"),
       domain = country@data$logcountry
-                        )
+                      )
     labels2 <- sprintf(
       "<strong>%s</strong><br/>%g cases",
       country@data$name,
       country@data$Confirmed
-                       ) %>%
+                      ) %>% 
       lapply(htmltools::HTML)
 
     leaflet(data = country ) %>%
     addTiles(options = tileOptions(noWrap = TRUE)) %>%
-    addPolygons(fillColor = ~pal2(country@data$logcountry),
+    addPolygons(fillColor = ~pal2(logcountry),
                 weight = 2,
                 opacity = 1,
                 color = "white",
@@ -71,13 +73,13 @@ function(input, output, session) {
                   textsize = "10px",
                   direction = "auto")) %>%
       addLegend(pal = pal2,
-                values = ~country@data$logcountry,
+                values = ~logcountry,
                 opacity = 0.7,
                 title = input$Date,
                 position = "bottomright") %>%
-      setView(map, lat = 38.0110306, lng = -110.4080342, zoom = 1.5)
-                                                })
-  
+      setView(map, lat = 8.819458, lng = -79.154637, zoom = 1.5)
+   })
+
   ############################################################################
   
   output$Outbreak_By_State <- renderPlot({

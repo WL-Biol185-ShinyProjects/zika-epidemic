@@ -71,7 +71,7 @@ country_data_filter <- country_data %>%
   filter_("Date" == input$Date)
 country@data <- 
   country@data %>%
-  left_join(country_data, by= c("name"="Country_Territory")) %>%
+  left_join(country_data_filter, by= c("name"="Country_Territory")) %>%
   na.omit(country@data)
 
 pal2 <- colorNumeric(
