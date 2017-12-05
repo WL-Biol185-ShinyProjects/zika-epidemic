@@ -10,7 +10,7 @@ navbarPage("Zika Epidemic",
 
            
   tabPanel("Home",
-           includeHTML("Zika_Home_Final.html")
+           includeMarkdown("Zika_Home.md")
           ),
            
   tabPanel("Overview",
@@ -29,12 +29,13 @@ navbarMenu("Zika Cases in Pan-America",
                               choices = unique(Zika_Country_Data$Country_Territory)
                             )
                            ),
-               mainPanel(plotOutput("Outbreak_Over_Time"))
+               mainPanel(plotOutput("Outbreak_Over_Time" , click = "plot_click") , verbatimTextOutput("info"))
                           )
             ),
              
               
       tabPanel("Heatmap Over Time",
+
               sliderInput(inputId = 'Date', 
                           label= "Select a Date",
                           min(Zika_Country_Data$Date),
@@ -68,7 +69,7 @@ navbarMenu("Zika Cases in Pan-America",
                        choices = unique(Zika_US_State_Data_2_$Region)
                        ),
  
-             mainPanel(plotOutput("Outbreak_By_State"))
+             mainPanel(plotOutput("Outbreak_By_State" , click = "plot_click2") , verbatimTextOutput("info2"))
 
           ),
   
