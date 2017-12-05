@@ -29,7 +29,7 @@ navbarMenu("Zika Cases in Pan-America",
                               choices = unique(Zika_Country_Data$Country_Territory)
                             )
                            ),
-               mainPanel(plotOutput("Outbreak_Over_Time" , click = "plot_click") , verbatimTextOutput("info"))
+               mainPanel(plotOutput("Outbreak_Over_Time" , click = "plot_click") , tableOutput("info"))
                           )
             ),
              
@@ -69,7 +69,7 @@ navbarMenu("Zika Cases in Pan-America",
                        choices = unique(Zika_US_State_Data_2_$Region)
                        ),
  
-             mainPanel(plotOutput("Outbreak_By_State" , click = "plot_click2") , verbatimTextOutput("info2"))
+             mainPanel(plotOutput("Outbreak_By_State" , click = "plot_click2") , tableOutput("info2"))
 
           ),
   
