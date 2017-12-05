@@ -148,5 +148,3 @@ labels2 <- sprintf(
                      position = "bottomright") %>%
            setView(lat = 38.0110306, lng = -110.4080342, zoom = 3)
        
-       
-####
