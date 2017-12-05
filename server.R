@@ -12,6 +12,8 @@ Zika_Country_Data <- read_csv("Zika - Country Data.csv")
 Zika_State_Data<- read.csv("Zika - US State Data (2).csv")
 Zika_Country_Data$Date <- as.Date(Zika_Country_Data$Date, format = "%m/%d/%y")
 
+
+
 function(input, output, session) {
 
   output$Outbreak_Over_Time <- renderPlot({
@@ -33,8 +35,8 @@ function(input, output, session) {
     
     country_data <- Zika_Country_Data
     joinedDataCountry<-left_join(country@data, country_data, by= c("name"="Country_Territory"))
-    country@data <- joinedDataCountry
-    na.omit(country@data)
+    country@data <- na.omit(joinedDataCountry)
+    
     
     pal2 <- colorNumeric(
       palette = c("#E3FF33", "#FF3342"),
