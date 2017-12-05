@@ -11,6 +11,9 @@ library(tidyverse)
 Zika_Country_Data <- read_csv("Zika - Country Data.csv")
 Zika_State_Data<- read.csv("Zika - US State Data (2).csv")
 Zika_Country_Data$Date <- as.Date(Zika_Country_Data$Date, format = "%m/%d/%y")
+Zika_Country_Data$logcountry <- log(Zika_Country_Data$Confirmed) 
+Zika_Country_Data$logcountry [Zika_Country_Data$logcountry==-Inf] <- 0
+
 
 
 
@@ -27,6 +30,8 @@ function(input, output, session) {
   })
   
  ###########################################################################
+##Country Map###
+  
   country <- rgdal::readOGR("countries.geo.json", "OGRGeoJSON")
 
    output$Map_Outbreak_Over_Time <- renderLeaflet({
@@ -40,9 +45,8 @@ function(input, output, session) {
     
     pal2 <- colorNumeric(
       palette = c("#E3FF33", "#FF3342"),
-      domain = country@data$Confirmed
+      domain = country@data$logcountry
                       )
-
     labels2 <- sprintf(
       "<strong>%s</strong><br/>%g cases",
       country@data$name,
@@ -52,7 +56,7 @@ function(input, output, session) {
 
     leaflet(data = country ) %>%
     addTiles(options = tileOptions(noWrap = TRUE)) %>%
-    addPolygons(fillColor = ~pal2(Confirmed),
+    addPolygons(fillColor = ~pal2(logcountry),
                 weight = 2,
                 opacity = 1,
                 color = "white",
@@ -71,7 +75,7 @@ function(input, output, session) {
                   textsize = "10px",
                   direction = "auto")) %>%
       addLegend(pal = pal2,
-                values = ~Confirmed,
+                values = ~logcountry,
                 opacity = 0.7,
                 title = input$Date,
                 position = "bottomright") %>%
