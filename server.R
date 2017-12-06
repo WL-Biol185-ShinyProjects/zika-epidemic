@@ -17,6 +17,12 @@ Zika_Country_Data$logcountry [Zika_Country_Data$logcountry==-Inf] <- 0
 
 function(input, output, session) {
 
+#######################################################################  
+
+  
+########################################################################
+  ##Country Plot##
+  
   output$Outbreak_Over_Time <- renderPlot({
     
     Zika_Country_Data %>%
@@ -26,6 +32,7 @@ function(input, output, session) {
       theme(axis.text.x = element_text(angle = 60, hjust = 1))
     
   })
+  
   
   output$info <- renderText({
     xy_str <- function(e) {

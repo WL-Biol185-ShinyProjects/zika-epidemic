@@ -1,0 +1,14 @@
+---
+title: "State_Plot"
+author: "abbottf18"
+date: "12/5/2017"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+## Zika Incidence by Region 
+
+This graph represents the incidence of Zika in the United States by region. Select one or more regions below to see the number of cumulative cases in each state. 
