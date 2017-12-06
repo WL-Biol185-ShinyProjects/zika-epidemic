@@ -22,6 +22,7 @@ navbarPage("Zika Epidemic",
 navbarMenu("Zika Cases in Pan-America",
               
     tabPanel("Graph Over Time",
+             includeMarkdown("Country_Plot.Rmd"),
              sidebarLayout(
                sidebarPanel(
                  selectInput( inputId = 'Country',
@@ -35,7 +36,7 @@ navbarMenu("Zika Cases in Pan-America",
              
               
       tabPanel("Heatmap Over Time",
-
+              includeMarkdown("Country_Map.Rmd"),
               sliderInput(inputId = 'Date', 
                           label= "Select a Date",
                           min(Zika_Country_Data$Date),
@@ -61,9 +62,9 @@ navbarMenu("Zika Cases in Pan-America",
              ),
   
   navbarMenu("Zika Cases in United States",
-             
         tabPanel("Graph of Cases in US",
-           selectInput(inputId = 'Region',
+                 includeMarkdown("State_Plot.Rmd"),
+                 selectInput(inputId = 'Region',
                        label= 'Select a Region',
                        multiple= TRUE,
                        choices = unique(Zika_US_State_Data_2_$Region)
@@ -74,7 +75,8 @@ navbarMenu("Zika Cases in Pan-America",
           ),
   
         tabPanel("United States Map of Zika",
-           leafletOutput("Outbreak_Heatmap")
+           includeMarkdown("State_Map.Rmd"),
+            leafletOutput("Outbreak_Heatmap")
           )
            )
   
