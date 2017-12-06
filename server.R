@@ -54,7 +54,7 @@ function(input, output, session) {
     
     country_data <- Zika_Country_Data
     joinedDataCountry<-left_join(country@data, country_data, by= c("name"="Country_Territory"))
-    country@data <- na.omit(joinedDataCountry)
+    country@data <- joinedDataCountry
     
     
     pal2 <- colorNumeric(
