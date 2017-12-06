@@ -1,0 +1,14 @@
+---
+title: "Country_Plot"
+author: "abbottf18"
+date: "12/5/2017"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+##Zika Incidence in Pan-America 
+
+This scatter plot represents Zika Incidence in Pan-American countries. Select a country on the drop down bar to see number of confirmed cases on the x-axis. Number of confirmed congenital disease cases are represented by varying coloration of points. 
