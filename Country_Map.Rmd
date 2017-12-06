@@ -5,9 +5,7 @@ date: "12/5/2017"
 output: html_document
 ---
 
-```{r setup, include=FALSE}
-knitr::opts_chunk$set(echo = TRUE)
-```
+
 
 ## Interactive Pan-America Animated Map
 Use this interactive map to visualize the spread of Zika incidence in Pan-America over time. Select a date using the slider bar or press play to view progression from November 2016. Hover over each country to view number of confirmed cases at a fixed date. 
