@@ -241,4 +241,36 @@ labels2 <- sprintf(
              xlim(1969, 2002)
            
          })
+
+         
+         
+         # output$TemporalPlot <- renderPlot({
+         #   ##Filter based on ui.R input
+         #   
+         #   Zika_Country_Data %>%
+         #     filter(Confirmed %>% input$CountryTemp) %>%
+         #     group_by(Date)%>%
+         #     count(Date, Country_Territory)
+         #   
+         #   ggplot(aes(Date, n, color= Country_Territory)) +
+         #     geom_line() + 
+         #     scale_color_gradient(values= c("#E3FF33", "#FF3342")) +
+         #     ggtitle("Temporal Zika Trends")+
+         #     labs(x= "Date", y= "Number of Cases")+
+         #     xlim (2016-11-17, 2017-10-05)
+         # })
+         # 
+         
+         
+         # tabPanel("Temporal Line Plot",
+         #          sidebarLayout(
+         #            sidebarPanel(
+         #              selectInput(inputId = 'CountryTemp',
+         #                          label = 'Select a Country',
+         #                          choices = unique(Zika_Country_Data$Country_Territory))
+         #                  )
+         #                 ),
+         #          mainPanel(plotOutput("TemporalPlot"))
+         # ),
+         # 
          
