@@ -83,7 +83,7 @@ navbarMenu("Zika Cases in Pan-America",
 
 
         tabPanel("References",
-            includeMarkdown("References.md")
+            includeMarkdown("References.rmd")
         )
   )
 
