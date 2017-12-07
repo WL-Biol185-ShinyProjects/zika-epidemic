@@ -66,7 +66,6 @@ navbarMenu("Zika Cases in Pan-America",
         tabPanel("Graph of Cases in US",
                  includeMarkdown("State_Plot.Rmd"),
                  selectInput(inputId = 'Region',
-                       align = "center",
                        label= 'Select a Region',
                        multiple= TRUE,
                        choices = unique(Zika_US_State_Data_2_$Region)
@@ -79,14 +78,13 @@ navbarMenu("Zika Cases in Pan-America",
         tabPanel("United States Map of Zika",
            includeMarkdown("State_Map.Rmd"),
             leafletOutput("Outbreak_Heatmap")
-        ),
-          
-
-
-        tabPanel("References",
-            includeMarkdown("References.rmd")
         )
-  )
+           ), 
+
+  tabPanel("References",
+          includeMarkdown("References.rmd")
+          )
+  
 
 )
 
