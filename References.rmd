@@ -22,6 +22,9 @@ https://github.com/johan/world.geo.json/blob/master/countries.geo.json
 
 Image sources:
 
-http://denverpublichealth.org/portals/32/Public-Health-and-Wellness/Public-Health/Health-Information/Images/DPH-Zika%20Virus-Thumbnails-lg.jpg?ver=2016-09-01-092028-300
+https://en.wikipedia.org/wiki/Aedes_aegypti#/media/File:Aedes_aegypti.jpg
+
+Cover image: taken by Muhammad Mahdi Karim via Wikipedia, created: 31 December 2008
+Published under GFDL 1.2 
 
 We would also like to thnk Dr. Greg Whitworth and the rest of the Bio 185 class for making this project possible.
