@@ -10,10 +10,15 @@ Our data was a combination of the datasets found through the CDC, WHO, and the P
 Original datasets:
 
 https://www.cdc.gov/zika/reporting/2017-case-counts.html
+
 https://github.com/BuzzFeedNews/zika-data
+
 http://www.zika-model.org/index.html
+
 http://ais.paho.org/phip/viz/ed_zika_countrymap.asp
+
 http://www.paho.org/hq/index.php?option=com_content&view=article&id=12390&Itemid=42090&lang=en
+
 https://wwwnc.cdc.gov/travel/page/world-map-areas-with-zika
 
 GeoJSON data retrieved from:
