@@ -7,6 +7,6 @@ output: html_document
 
 
 
-## Zika Incidence in Pan-America 
+# Zika Incidence in Pan-America 
 
-This scatter plot represents Zika Incidence in Pan-American countries. Select a country on the drop down bar to see number of confirmed cases on the x-axis. Number of confirmed congenital disease cases are represented by varying coloration of points. to view country specific information at a single date, select any point on the plot. 
+## This scatter plot represents Zika Incidence in Pan-American countries. Select a country on the drop down bar to see number of confirmed cases on the x-axis. Number of confirmed congenital disease cases are represented by varying coloration of points. to view country specific information at a single date, select any point on the plot. 
