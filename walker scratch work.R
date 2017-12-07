@@ -199,3 +199,46 @@ labels2 <- sprintf(
                      position = "bottomright") %>%
            setView(lat = 38.0110306, lng = -110.4080342, zoom = 3)
        
+
+         
+         ##Temporal Line Plots by Region
+         colpal <- c("deepskyblue2", "forestgreen", "gold2", "darkorchid2", "firebrick2") 
+         
+         
+         output$TemporalPlot <- renderPlot({
+           ##Filter based on ui.R input
+           
+          Zika_Country_Data %>%
+             filter(Confirmed %>% input$Country) %>%
+             group_by(Date)%>%
+             count(Date, Country_Territory)
+              
+             ggplot(aes(Date, n, color= Country_Territory)) +
+             geom_line() + 
+             scale_color_gradient(values= c("#E3FF33", "#FF3342")) +
+            ggtitle("Temporal Zika Trends")+
+            labs(x= "Date", y= "Number of Cases")+
+            xlim (2016-11-17, 2017-10-05)
+             
+             
+             
+           
+           rapidProg_disease %>%
+             filter(DISEASE == input$select9) %>%
+             group_by(XRAY_YEAR) %>%
+             count(XRAY_YEAR, REGION) %>%
+             
+             ##Plot
+             ggplot(aes(XRAY_YEAR, n, color = REGION)) +
+             geom_line() +
+             scale_colour_manual(values = c("Northern Appalachia" = "deepskyblue2"
+                                            , "Central Appalachia" = "forestgreen"
+                                            , "Southern Appalachia" = "gold2"
+                                            , "Mid-West" = "darkorchid2"
+                                            , "West" = "firebrick2")) +
+             ggtitle("Temporal Disease Trends") +
+             labs(x="Year", y="Number of Cases") +
+             xlim(1969, 2002)
+           
+         })
+         
