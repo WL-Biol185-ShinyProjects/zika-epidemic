@@ -78,14 +78,13 @@ navbarMenu("Zika Cases in Pan-America",
         tabPanel("United States Map of Zika",
            includeMarkdown("State_Map.Rmd"),
             leafletOutput("Outbreak_Heatmap")
-        ),
-          
-
-
-        tabPanel("References",
-            includeMarkdown("References.rmd")
         )
-  )
+           ), 
+
+  tabPanel("References",
+          includeMarkdown("References.rmd")
+          )
+  
 
 )
 

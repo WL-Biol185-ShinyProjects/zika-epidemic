@@ -3,7 +3,7 @@ title: "References.rmd"
 output: html_document
 ---
 
-##References
+## References
 
 Our data was a combination of the datasets found through the CDC, WHO, and the Pan America Health Organization.
 
