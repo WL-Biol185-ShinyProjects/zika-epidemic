@@ -6,7 +6,8 @@ Zika_Country_Data <- read.csv("Zika - Country Data.csv")
 Zika_State_Data<- read.csv("Zika - US State Data (2).csv")
 Zika_Country_Data$Date <- as.Date(Zika_Country_Data$Date, format = "%m/%d/%y")
 
-navbarPage("Zika Epidemic",
+navbarPage( theme = shinythemes::shinytheme("superhero"),
+            "Zika Epidemic",
 
            
   tabPanel("Home",

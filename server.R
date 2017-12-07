@@ -19,7 +19,9 @@ Zika_Country_Data$logcountry [Zika_Country_Data$logcountry==-Inf] <- 0
 
 function(input, output, session) {
 
-  output$Outbreak_Over_Time <- renderPlot({
+############################################################################
+#Country Tablle 
+   output$Outbreak_Over_Time <- renderPlot({
     
     Zika_Country_Data %>%
       filter(Country_Territory == input$Country) %>%
@@ -118,7 +120,7 @@ function(input, output, session) {
   states@data <- joinedData
 
   pal1 <- colorNumeric(
-    palette = "YlOrRd",
+    palette = c("#FFF68F", "#FF3342"),
     domain = states@data$Number_of_Cases)
   labels1 <- sprintf(
       "<strong>%s</strong><br/>%g cases",
