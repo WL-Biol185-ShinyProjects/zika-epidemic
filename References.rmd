@@ -1,0 +1,27 @@
+---
+title: "References.rmd"
+output: html_document
+---
+
+##References
+
+Our data was a combination of the datasets found through the CDC, WHO, and the Pan America Health Organization.
+
+Original datasets:
+
+https://www.cdc.gov/zika/reporting/2017-case-counts.html
+https://github.com/BuzzFeedNews/zika-data
+http://www.zika-model.org/index.html
+http://ais.paho.org/phip/viz/ed_zika_countrymap.asp
+http://www.paho.org/hq/index.php?option=com_content&view=article&id=12390&Itemid=42090&lang=en
+https://wwwnc.cdc.gov/travel/page/world-map-areas-with-zika
+
+GeoJSON data retrieved from:
+
+https://github.com/johan/world.geo.json/blob/master/countries.geo.json
+
+Image sources:
+
+http://denverpublichealth.org/portals/32/Public-Health-and-Wellness/Public-Health/Health-Information/Images/DPH-Zika%20Virus-Thumbnails-lg.jpg?ver=2016-09-01-092028-300
+
+We would also like to thnk Dr. Greg Whitworth and the rest of the Bio 185 class for making this project possible.

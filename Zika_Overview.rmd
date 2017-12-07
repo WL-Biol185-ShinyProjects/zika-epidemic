@@ -3,9 +3,7 @@ title: "Zika_Overview.rmd"
 output: html_document
 ---
 
-```{r setup, include=FALSE}
-knitr::opts_chunk$set(echo = TRUE)
-```
+
 # Zika Virus Overview
   
   The Zika virus is spread primarily by the bite of an infected *Aedes* species mosquito, but can also be transmitted from a pregnant woman to her fetus, through sex, and through blood transfusions. 
@@ -16,7 +14,7 @@ knitr::opts_chunk$set(echo = TRUE)
   
 **Risk**
  
-  Zika poses the biggest risk to reproductive age and pregnant women. Zika causes birth defets, including called [microcephaly][id]. and other severe brain defects in the fetus, other problems such as miscarriage, stillbirth, and other birth defects.  [Guillain-Barre syndrome][id2]., an uncommon sickness of the nervous system has also been reported in areas affected by Zika. 
+  Zika poses the biggest risk to reproductive age and pregnant women. Zika causes birth defets, including called [microcephaly][id] and other severe brain defects in the fetus, other problems such as miscarriage, stillbirth, and other birth defects.  [Guillain-Barre syndrome][id2], an uncommon sickness of the nervous system has also been reported in areas affected by Zika. 
   
 **Treatment/Prevention**
  

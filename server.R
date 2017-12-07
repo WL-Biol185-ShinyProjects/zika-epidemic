@@ -15,15 +15,13 @@ Zika_Country_Data$logcountry <- log(Zika_Country_Data$Confirmed)
 Zika_Country_Data$logcountry [Zika_Country_Data$logcountry==-Inf] <- 0
 
 
+
+
 function(input, output, session) {
 
-#######################################################################  
-
-  
-########################################################################
-  ##Country Plot##
-  
-  output$Outbreak_Over_Time <- renderPlot({
+############################################################################
+#Country Tablle 
+   output$Outbreak_Over_Time <- renderPlot({
     
     Zika_Country_Data %>%
       filter(Country_Territory == input$Country) %>%
@@ -33,8 +31,7 @@ function(input, output, session) {
     
   })
   
-  
-  output$info <- renderText({
+  output$info <- renderTable({
     xy_str <- function(e) {
       if(is.null(e)) return ("NULL\n")
       paste0("x=" , round(e$x, 1), " y=", round(e$y, 1), "\n")
@@ -44,7 +41,8 @@ function(input, output, session) {
       paste0("xmin=", round(e$xmin, 1), "xmax=", round(e$xmax, 1),
              "ymin=", round(e$ymin, 1), "ymax=", round(e$ymax, 1))
     }
-    nearPoints(Zika_Country_Data$Date, input$plot_click)
+    nearPoints(Zika_Country_Data, input$plot_click) %>%
+      select(Date, Country_Territory, Confirmed, Confirmed_congenital_syndrome, Imported_Cases, Incidence_Rate)
   })
 
  ###########################################################################
@@ -112,6 +110,7 @@ function(input, output, session) {
     
   })
 
+
   ############################################################################
   ##States Map##
 
@@ -121,7 +120,7 @@ function(input, output, session) {
   states@data <- joinedData
 
   pal1 <- colorNumeric(
-    palette = c("#E3FF33", "#FF3342"),
+    palette = c("#FFF68F", "#FF3342"),
     domain = states@data$Number_of_Cases)
   labels1 <- sprintf(
       "<strong>%s</strong><br/>%g cases",
