@@ -19,18 +19,18 @@ Zika_Country_Data$logcountry [Zika_Country_Data$logcountry==-Inf] <- 0
 
 function(input, output, session) {
 
-############################################################################
-#Country Tablle 
+# ############################################################################
+# #Country Tablle 
    output$Outbreak_Over_Time <- renderPlot({
-    
+
     Zika_Country_Data %>%
       filter(Country_Territory == input$Country) %>%
       ggplot(aes(Date, Confirmed, color=Confirmed_congenital_syndrome)) +
       geom_point() +
       theme(axis.text.x = element_text(angle = 60, hjust = 1))
-    
+
   })
-  
+
   output$info <- renderTable({
     xy_str <- function(e) {
       if(is.null(e)) return ("NULL\n")
