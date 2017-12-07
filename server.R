@@ -42,7 +42,7 @@ function(input, output, session) {
              "ymin=", round(e$ymin, 1), "ymax=", round(e$ymax, 1))
     }
     nearPoints(Zika_Country_Data, input$plot_click) %>%
-      select(Date, Country_Territory, Confirmed, Confirmed_congenital_syndrome, Imported_Cases, Incidence_Rate)
+      select(Country_Territory, Confirmed, Confirmed_congenital_syndrome, Imported_Cases, Incidence_Rate)
   })
 
  ###########################################################################
