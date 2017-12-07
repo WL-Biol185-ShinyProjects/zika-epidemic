@@ -115,7 +115,7 @@ function(input, output, session) {
   ##States Map##
 
   states <- rgdal::readOGR("States.JSON", "OGRGeoJSON")
-  state_data <- Zika_US_State_Data_2_
+  state_data <- Zika_State_Data
   joinedData<-left_join(states@data, state_data, by= c("NAME"="States"))
   states@data <- joinedData
 
