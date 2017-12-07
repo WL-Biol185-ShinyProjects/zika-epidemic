@@ -68,7 +68,7 @@ navbarMenu("Zika Cases in Pan-America",
                  selectInput(inputId = 'Region',
                        label= 'Select a Region',
                        multiple= TRUE,
-                       choices = unique(Zika_US_State_Data_2_$Region)
+                       choices = unique(Zika_State_Data$Region)
                        ),
  
              mainPanel(plotOutput("Outbreak_By_State" , click = "plot_click2") , tableOutput("info2"))
