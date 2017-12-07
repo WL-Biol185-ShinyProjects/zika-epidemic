@@ -20,7 +20,7 @@ Zika_Country_Data$logcountry [Zika_Country_Data$logcountry==-Inf] <- 0
 function(input, output, session) {
 
 # ############################################################################
-# #Country Tablle 
+# #Country Table 
    output$Outbreak_Over_Time <- renderPlot({
 
     Zika_Country_Data %>%
@@ -157,4 +157,5 @@ function(input, output, session) {
 
       })
   
-    }
+}
+
