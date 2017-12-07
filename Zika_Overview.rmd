@@ -3,9 +3,7 @@ title: "Zika_Overview.rmd"
 output: html_document
 ---
 
-```{r setup, include=FALSE}
-knitr::opts_chunk$set(echo = TRUE)
-```
+
 # Zika Virus Overview
   
   The Zika virus is spread primarily by the bite of an infected *Aedes* species mosquito, but can also be transmitted from a pregnant woman to her fetus, through sex, and through blood transfusions. 

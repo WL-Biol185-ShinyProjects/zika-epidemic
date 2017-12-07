@@ -31,7 +31,7 @@ function(input, output, session) {
     
   })
   
-  output$info <- renderText({
+  output$info <- renderTable({
     xy_str <- function(e) {
       if(is.null(e)) return ("NULL\n")
       paste0("x=" , round(e$x, 1), " y=", round(e$y, 1), "\n")
@@ -41,7 +41,8 @@ function(input, output, session) {
       paste0("xmin=", round(e$xmin, 1), "xmax=", round(e$xmax, 1),
              "ymin=", round(e$ymin, 1), "ymax=", round(e$ymax, 1))
     }
-    nearPoints(Zika_Country_Data$Date, input$plot_click)
+    nearPoints(Zika_Country_Data, input$plot_click) %>%
+      select(Date, Country_Territory, Confirmed, Confirmed_congenital_syndrome, Imported_Cases, Incidence_Rate)
   })
 
  ###########################################################################
@@ -108,6 +109,7 @@ function(input, output, session) {
       theme(axis.text.x = element_text(angle = 60, hjust = 1))
     
   })
+
 
   ############################################################################
   ##States Map##

@@ -1,0 +1,11 @@
+---
+title: "State_Map"
+author: "abbottf18"
+date: "12/5/2017"
+output: html_document
+---
+
+
+
+## Zika Incidence by State 
+Use this map to visualize the current Zika incidence in the United States. Hover over each state to view the number of confirmed cases.
