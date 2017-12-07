@@ -7,7 +7,7 @@ output: html_document
 
 
 
-## Zika Incidence by Region 
+# Zika Incidence by Region 
 
-This graph represents the incidence of Zika in the United States by region. Select one or more regions below to see the number of cumulative cases in each state. 
+## This graph represents the incidence of Zika in the United States by region. Select one or more regions below to see the number of cumulative cases in each state. 
 
